@@ -15,6 +15,7 @@ import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.util.EventListener;
 
 public class Controller {
@@ -30,40 +31,30 @@ public class Controller {
     @FXML
     private Slider slider1,
                     slider2;
-    private int sliderValue1,
-                sliderValue2;
+    private File image;
 
 
-  /*  public void setSliders(Slider slider){
-        slider.setMax(5);
-        slider.setMin(3);
-        slider.setValue(3);
-        slider.setMajorTickUnit(1);
-        slider.setMinorTickCount(0);
-        slider.setSnapToTicks(true);
-        slider.setShowTickLabels(true);
-    }*/
+
   @FXML
   public void initialize(){
-    sliderListener();
+    sliderListener(slider1);
+    sliderListener(slider2);
   }
 
   @FXML
-  public void sliderListener(){
-
-      slider1.valueChangingProperty().addListener(new ChangeListener<Boolean>() {
+  public void sliderListener(Slider slider){
+      slider.valueChangingProperty().addListener(new ChangeListener<Boolean>() {
           @Override
           public void changed(ObservableValue<? extends Boolean> observableValue, Boolean aBoolean, Boolean t1) {
-              if(slider1.getValue() < 4 || slider2.getValue() < 4)
+              if (slider1.getValue() < 4 || slider2.getValue() < 4) {
                   difficultyLevel.textProperty().setValue("Medium");
-              else
-              if(slider1.getValue() < 5 || slider2.getValue() < 5)
+              }else if (slider1.getValue() < 5 || slider2.getValue() < 5) {
                   difficultyLevel.textProperty().setValue("Hard");
-              else
-              if(slider1.getValue() < 6 || slider2.getValue() < 6)
-                  difficultyLevel.textProperty().setValue("Extreme");
+                 }else
+                    if(slider1.getValue() < 6 || slider2.getValue() < 6) {
+                        difficultyLevel.textProperty().setValue("Extreme");
+                    }
           }
-
       });
   }
 
@@ -85,9 +76,6 @@ public class Controller {
         gameScene = new Scene(root);
         Main.stage.setScene(gameScene);
 
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Choose image");
-        fileChooser.showOpenDialog(Main.stage);
 
     }
 
