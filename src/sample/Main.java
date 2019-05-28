@@ -8,17 +8,35 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 
+    public static Stage stage;
+
+
+    public static void setStage(boolean ok){
+
+    }
+
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root1 = FXMLLoader.load(getClass().getResource("sample.fxml")),
-                root2 = FXMLLoader.load(getClass().getResource("gameScene.fxml"));
-        primaryStage.setTitle("Puzzle");
-        primaryStage.setScene(new Scene(root1, 600, 500));
-        primaryStage.show();
+        stage = primaryStage;
+        Parent root1 = FXMLLoader.load(getClass().getResource("sample.fxml"));
+        stage.setTitle("Puzzle");
+        stage.setScene(new Scene(root1, 600, 500));
+        stage.show();
+        stage.setResizable(false);
+    }
+    public void menu(Stage primaryStage) throws Exception{
+
     }
 
 
     public static void main(String[] args) {
         launch(args);
+
+
+
+
+
+
+
     }
 }
