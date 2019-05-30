@@ -5,22 +5,26 @@ import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
-import javafx.scene.text.Text;
-import javafx.stage.FileChooser;
-import javafx.stage.Stage;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.image.PixelReader;
+import javafx.scene.image.WritableImage;
 
 import java.io.File;
-import java.util.EventListener;
 
-public class Controller {
 
-    Scene gameScene;
+public class MenuController {
+
+    ImageChooseSceneController imageChooseSceneController;
+
+    Scene imageChooseScene;
+    @FXML
+    private ImageView background;
 
     @FXML
     private Button startText;
@@ -31,7 +35,6 @@ public class Controller {
     @FXML
     private Slider slider1,
                     slider2;
-    private File image;
 
 
 
@@ -39,6 +42,21 @@ public class Controller {
   public void initialize(){
     sliderListener(slider1);
     sliderListener(slider2);
+    setBackground("MenuBackground.jpg");
+
+
+  }
+
+  @FXML
+  public void setBackground(String adress){
+      File file = new File(adress);
+      Image image = new Image(file.toURI().toString());
+      background.setImage(image);
+  }
+
+  @FXML
+  public void difficultyLevel(){
+      if (slider1.getValue() < 4) difficultyLevel.setText("");
   }
 
   @FXML
@@ -58,26 +76,17 @@ public class Controller {
       });
   }
 
-  @FXML
-  public void difficultyLevel(ActionEvent e) throws Exception{
-
-        difficultyLevel.setText("lol");
-  }
 
     @FXML
     public void onStartClick(ActionEvent e) throws Exception{
         startText.setText("...");
-
-        /*sliderValue1 = (int)slider1.getValue();
-        sliderValue2 = (int)slider2.getValue();*/
-
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("gameScene.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("ImageChooseScene.fxml"));
         Parent root = fxmlLoader.load();
-        gameScene = new Scene(root);
-        Main.stage.setScene(gameScene);
+        imageChooseScene = new Scene(root);
+        Main.stage.setScene(imageChooseScene);
 
-
-    }
-
-
+        imageChooseSceneController=fxmlLoader.getController();
+        imageChooseSceneController.setCropsX((int)slider1.getValue());
+        imageChooseSceneController.setCropsY((int)slider2.getValue());
+  }
 }
