@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 public class Main extends Application {
 
     public static Stage stage;
-
+    public static int windowWidth = 1280, windowHeight = 720;
 
     public static void setStage(boolean ok){
 
@@ -20,7 +20,7 @@ public class Main extends Application {
         stage = primaryStage;
         Parent root1 = FXMLLoader.load(getClass().getResource("Menu.fxml"));
         stage.setTitle("Puzzle");
-        stage.setScene(new Scene(root1, 1280, 720));
+        stage.setScene(new Scene(root1, windowWidth, windowHeight));
         stage.show();
         stage.setResizable(false);
     }

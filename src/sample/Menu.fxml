@@ -46,8 +46,8 @@
                           </rowConstraints>
                            <children>
                               <Slider fx:id="slider1" majorTickUnit="1.0" max="5.0" maxWidth="100.0" min="3.0" minorTickCount="0" prefWidth="100.0" showTickLabels="true" snapToTicks="true" value="3.0" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
-                              <Slider fx:id="slider2" majorTickUnit="1.0" max="5.0" maxWidth="100.0" min="3.0" minorTickCount="0" onMouseDragReleased="#difficultyLevel" showTickLabels="true" snapToTicks="true" value="3.0" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP" />
-                              <Label fx:id="difficultyLevel" alignment="CENTER" contentDisplay="CENTER" prefWidth="94.0" text="Medium" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
+                              <Slider fx:id="slider2" majorTickUnit="1.0" max="5.0" maxWidth="100.0" min="3.0" minorTickCount="0"  showTickLabels="true" snapToTicks="true" value="3.0" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP" />
+                              <Label fx:id="difficultyLevel" alignment="CENTER" contentDisplay="CENTER" prefWidth="94.0" text="Easy" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
                                  <cursor>
                                     <Cursor fx:constant="DEFAULT" />
                                  </cursor>
