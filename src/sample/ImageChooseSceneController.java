@@ -68,20 +68,29 @@ public class ImageChooseSceneController {
     }
 
     private void setImage(String adress) throws IOException{
-        setScene();
+
         int x = 0, y = 0,
                 width = Main.windowWidth / cropsX, height = Main.windowHeight / cropsY;
-       Image[][] imagePieces = new Image[cropsX][cropsY];
+       Image[][] imagePieces = new Image[cropsY][cropsX];
        PixelReader reader = readImage(adress).getPixelReader();
-       for(int i = 0; i < cropsX; i++){
+       for(int i = 0; i < cropsY; i++){
            x=0;
-           for(int j = 0; j < cropsY; j++){
+           for(int j = 0; j < cropsX; j++){
                imagePieces[i][j] = new WritableImage(reader, x, y, width, height);
                        x+=width;
            }
            y+=height;
        }
-       gameSceneController.setImage(imagePieces);
+
+       GameSceneController.image = imagePieces;
+       GameSceneController.cropsX = cropsX;
+       GameSceneController.cropsY = cropsY;
+      // gameSceneController.setImage(imagePieces);
+      // gameSceneController.setCropsX(cropsX);
+      // gameSceneController.setCropsY(cropsY);
+
+        setScene();
+
     }
 
     void setCropsY(int cropsY) {
