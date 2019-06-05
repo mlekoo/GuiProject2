@@ -15,7 +15,7 @@ import java.io.IOException;
 
 public class ImageChooseSceneController {
 
-    private int cropsX,cropsY;
+    private int columns, lines;
 
     private GameSceneController gameSceneController;
 
@@ -70,12 +70,12 @@ public class ImageChooseSceneController {
     private void setImage(String adress) throws IOException{
 
         int x = 0, y = 0,
-                width = Main.windowWidth / cropsX, height = Main.windowHeight / cropsY;
-       Image[][] imagePieces = new Image[cropsY][cropsX];
+                width = Main.windowWidth / columns, height = Main.windowHeight / lines;
+       Image[][] imagePieces = new Image[lines][columns];
        PixelReader reader = readImage(adress).getPixelReader();
-       for(int i = 0; i < cropsY; i++){
+       for(int i = 0; i < lines; i++){
            x=0;
-           for(int j = 0; j < cropsX; j++){
+           for(int j = 0; j < columns; j++){
                imagePieces[i][j] = new WritableImage(reader, x, y, width, height);
                        x+=width;
            }
@@ -83,21 +83,21 @@ public class ImageChooseSceneController {
        }
 
        GameSceneController.image = imagePieces;
-       GameSceneController.cropsX = cropsX;
-       GameSceneController.cropsY = cropsY;
+       GameSceneController.columns = columns;
+       GameSceneController.lines = lines;
       // gameSceneController.setImage(imagePieces);
-      // gameSceneController.setCropsX(cropsX);
-      // gameSceneController.setCropsY(cropsY);
+      // gameSceneController.setColumns(columns);
+      // gameSceneController.setLines(lines);
 
         setScene();
 
     }
 
-    void setCropsY(int cropsY) {
-        this.cropsY = cropsY;
+    void setLines(int lines) {
+        this.lines = lines;
     }
 
-    void setCropsX(int cropsX) {
-        this.cropsX = cropsX;
+    void setColumns(int columns) {
+        this.columns = columns;
     }
 }

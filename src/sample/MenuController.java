@@ -12,8 +12,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.image.PixelReader;
-import javafx.scene.image.WritableImage;
 
 import java.io.File;
 import java.io.IOException;
@@ -79,8 +77,8 @@ public class MenuController {
       imageChooseScene = new Scene(root);
       Main.stage.setScene(imageChooseScene);
       imageChooseSceneController=fxmlLoader.getController();
-      imageChooseSceneController.setCropsX((int)slider1.getValue());
-      imageChooseSceneController.setCropsY((int)slider2.getValue());
+      imageChooseSceneController.setColumns((int)slider1.getValue());
+      imageChooseSceneController.setLines((int)slider2.getValue());
   }
   @FXML
   public void onStartClick(ActionEvent e) throws IOException{
