@@ -2,6 +2,7 @@
 package sample;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
@@ -17,7 +18,13 @@ public class GameSceneController {
     private GridPane gridPane;
 
     @FXML
+    private Label time;
+
+    @FXML
     public void initialize() {
+
+        Main.stage.setTitle("Do what you can");
+        time.setText("time");
 
         image[(int)(Math.random()* lines)][(int)(Math.random()* columns)]= null;
 
@@ -31,6 +38,7 @@ public class GameSceneController {
                 gridPane.add(IMGS[i][j],j,i);
             }
         }
+
     }
 
     private void swapImage(int x, int y){
