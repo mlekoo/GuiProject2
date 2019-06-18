@@ -85,6 +85,7 @@ public class ImageChooseSceneController {
        GameSceneController.image = imagePieces;
        GameSceneController.columns = columns;
        GameSceneController.lines = lines;
+       GameSceneController.gameScene = gameScene;
       // gameSceneController.setImage(imagePieces);
       // gameSceneController.setColumns(columns);
       // gameSceneController.setLines(lines);
